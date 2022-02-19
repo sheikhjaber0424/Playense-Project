@@ -6,10 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     private Touch touch;
     private float speedModifier;
+
+    public Rigidbody playerRb;
     // Start is called before the first frame update
     void Start()
     {
         speedModifier = 0.01f;
+        playerRb =gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -26,7 +29,24 @@ public class PlayerMovement : MonoBehaviour
                     transform.position.y,
                     transform.position.z 
                     );
+                
             }
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+
+    {
+        if (collision.gameObject.CompareTag("Tiles"))
+        {
+            //playerRb.isKinematic = false;
+            Debug.Log("jump Up");
+
+            playerRb.AddForce(Vector3.up * GameManager.Instance.upforce);
+
+        }
+
+    }
+
+
 }

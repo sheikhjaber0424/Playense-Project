@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject spawn;
     private float spawnRangeX = 3;
     private float spawnPosZ = 20;
+    private float waitTimer = 0.0f;
 
     bool isSpawn = true;
 
@@ -18,12 +19,12 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        if(isSpawn)
+        waitTimer += Time.deltaTime;
+        if (isSpawn)
         {
             isSpawn = false;
             SpawnObject();
-            StartCoroutine(Delay());
-           
+            StartCoroutine(Delay());           
         }
         
            
@@ -40,7 +41,15 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(2);
+        if(waitTimer > 10)
+        {
+            yield return new WaitForSeconds(0.7f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2);
+        }
+       
         isSpawn = true;
     }
 
