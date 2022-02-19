@@ -29,6 +29,12 @@ public class BallBounce : MonoBehaviour
             isTrigger = false;
            
         }
+
+        if (Player.transform.position.y < -3)
+        {
+            GameManager.Instance.GameOver();
+        }
+
     }
     // Update is called once per frame   
 

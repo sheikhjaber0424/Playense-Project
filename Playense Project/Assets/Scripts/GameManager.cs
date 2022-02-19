@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-   
+    public static GameManager Instance; 
 
-    public float downforce = 100.0f;
-    public float upforce = 100.0f;
+    public float downforce = 700.0f;
+    public float upforce = 400.0f;
     public float tilesSpeed = 2.0f;
     public float timer;
+    public int score = 0;
+
+    public GameObject background;
+
+    public TextMeshProUGUI HighScoreText;
+    public TextMeshProUGUI DiamondText;
     // Start is called before the first frame update
 
     private void Awake()
@@ -35,5 +43,16 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+
+    public void UpdateScore(int addToScore)
+    {
+        score = score + addToScore;
+        HighScoreText.text = "High-Score  " + score;
+    }
+
+    public void GameOver()
+    {
+        background.SetActive(true);
     }
 }

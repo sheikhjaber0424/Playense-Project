@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Touch touch;
     private float speedModifier;
+    private int pointValue = 1;
 
     public Rigidbody playerRb;
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
                 
             }
         }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,9 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
             playerRb.AddForce(Vector3.up * GameManager.Instance.upforce);
 
+            GameManager.Instance.UpdateScore(pointValue);
         }
 
     }
 
+
+   
 
 }
