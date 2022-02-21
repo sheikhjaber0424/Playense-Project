@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Tiles"))
         {
-            //playerRb.isKinematic = false;
+            
             Debug.Log("jump Up");
 
             playerRb.AddForce(Vector3.up * GameManager.Instance.upforce);

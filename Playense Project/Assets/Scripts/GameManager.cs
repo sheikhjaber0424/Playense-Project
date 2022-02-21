@@ -14,11 +14,16 @@ public class GameManager : MonoBehaviour
     public float tilesSpeed = 2.0f;
     public float timer;
     public int score = 0;
+    public bool isGameActive;
 
     public GameObject background;
 
     public TextMeshProUGUI HighScoreText;
     public TextMeshProUGUI DiamondText;
+
+    public Material[] material;
+   
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -28,6 +33,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timer = 0;
+        isGameActive = true;
+
+
     }
 
     // Update is called once per frame
@@ -39,7 +47,8 @@ public class GameManager : MonoBehaviour
             tilesSpeed = 20.0f;
             downforce = 1400;
             upforce = 600;
-            Debug.Log(tilesSpeed);
+
+            
         }
 
 
@@ -54,5 +63,16 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         background.SetActive(true);
+        isGameActive = false;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

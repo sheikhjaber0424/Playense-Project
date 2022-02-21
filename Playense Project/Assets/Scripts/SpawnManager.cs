@@ -20,12 +20,14 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         waitTimer += Time.deltaTime;
-        if (isSpawn)
-        {
-            isSpawn = false;
-            SpawnObject();
-            StartCoroutine(Delay());           
-        }
+       
+            if (isSpawn && GameManager.Instance.isGameActive)
+            {
+                isSpawn = false;
+                SpawnObject();
+                StartCoroutine(Delay());
+            }
+       
         
            
     }
@@ -41,7 +43,7 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator Delay()
     {
-        if(waitTimer > 10)
+        if(waitTimer > 20)
         {
             yield return new WaitForSeconds(0.7f);
         }

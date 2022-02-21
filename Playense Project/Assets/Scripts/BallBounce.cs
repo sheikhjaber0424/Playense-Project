@@ -7,6 +7,7 @@ public class BallBounce : MonoBehaviour
 {
     //VARIABLES
     public GameObject Player;
+    public GameObject CameraFollow;
     Rigidbody playerRb;
     bool isTrigger=false;
 
@@ -24,7 +25,7 @@ public class BallBounce : MonoBehaviour
         if (Player.transform.position.y >= 5.0f && isTrigger == true)
         {
             playerRb.isKinematic = true;
-           Player.transform.position= new Vector3(Player.transform.position.x, 4.9f, Player.transform.position.z);
+            Player.transform.position= new Vector3(Player.transform.position.x, 4.9f, Player.transform.position.z);
             //Debug.Log("kinematic");
             isTrigger = false;
            
@@ -33,7 +34,15 @@ public class BallBounce : MonoBehaviour
         if (Player.transform.position.y < -3)
         {
             GameManager.Instance.GameOver();
+            GameManager.Instance.isGameActive = false;
+            playerRb.isKinematic = true;
         }
+        if(Player.transform.position.x> -2 && Player.transform.position.x <2 )
+        {
+            CameraFollow.transform.position = new Vector3(Player.transform.position.x, CameraFollow.transform.position.y, CameraFollow.transform.position.z);
+        }
+        
+            
 
     }
     // Update is called once per frame   
@@ -44,8 +53,7 @@ public class BallBounce : MonoBehaviour
         {
             playerRb.isKinematic = false;
             playerRb.AddForce(Vector3.down * GameManager.Instance.downforce);
-            isTrigger = true;
-            Debug.Log("nn");
+            isTrigger = true;      
         }
    
     }
