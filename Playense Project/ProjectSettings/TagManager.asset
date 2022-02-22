@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plane2
   - Tiles
+  - Diamond
   layers:
   - Default
   - TransparentFX

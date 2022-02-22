@@ -48,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
 
             GameManager.Instance.UpdateScore(pointValue);
         }
+        if (collision.gameObject.CompareTag("Diamond"))
+        {
+            Destroy(collision.gameObject);
+            GameManager.Instance.UpdateScore2(pointValue);
+        }
+
 
     }
 

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public float tilesSpeed = 2.0f;
     public float timer;
     public int score = 0;
+    public int score1 = 0;
+
     public bool isGameActive;
 
     public GameObject background;
@@ -59,6 +61,11 @@ public class GameManager : MonoBehaviour
         score = score + addToScore;
         HighScoreText.text = "High-Score  " + score;
     }
+     public void UpdateScore2(int addToScore)
+    {
+        score1 = score1 + addToScore;
+        DiamondText.text = "Diamonds  " + score1;
+    }
 
     public void GameOver()
     {
@@ -73,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void Exit()
     {
+        Debug.Log("Quit");
         Application.Quit();
     }
 }
