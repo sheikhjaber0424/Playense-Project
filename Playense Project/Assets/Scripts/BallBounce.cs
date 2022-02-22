@@ -11,6 +11,8 @@ public class BallBounce : MonoBehaviour
     Rigidbody playerRb;
     bool isTrigger=false;
 
+   
+
     //REFERENCES
 
     // Start is called before the first frame update

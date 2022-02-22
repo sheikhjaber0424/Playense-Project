@@ -35,7 +35,7 @@ public class ChangeMaterial : MonoBehaviour
         }
         else if(index ==1)
         {
-            material.color = Color.magenta;
+            material.color = Color.blue;
 
         } 
         else if(index ==2)

@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject spawn;
     public GameObject diamondspawn;
     
-    private float spawnRangeX = 3;
+    private float spawnRangeX = 4;
     private float spawnPosZ = 20;
     private float waitTimer = 0.0f;
     int randomNum;
