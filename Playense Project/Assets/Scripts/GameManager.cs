@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float timer;
     public int score = 0;
     public int score1 = 0;
+    public float highScore;
 
     public bool isGameActive;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI HighScoreText;
     public TextMeshProUGUI DiamondText;
+    public TextMeshProUGUI ScoreText;
 
     public Material[] material;
    
@@ -37,6 +39,8 @@ public class GameManager : MonoBehaviour
         timer = 0;
         isGameActive = true;
 
+        highScore = PlayerPrefs.GetFloat("Highscore");
+
 
     }
 
@@ -50,9 +54,15 @@ public class GameManager : MonoBehaviour
             downforce = 1400;
             upforce = 600;
 
-            
         }
 
+        ScoreText.text = score.ToString();
+        HighScoreText.text = highScore.ToString();
+
+        if(score > highScore)
+        {
+            PlayerPrefs.SetFloat("Highscore", score);
+        }
 
     }
 
@@ -69,8 +79,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        background.SetActive(true);
         isGameActive = false;
+        background.SetActive(true);
     }
 
     public void RestartGame()
